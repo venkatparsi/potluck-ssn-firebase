@@ -28,6 +28,7 @@ const guestbookContainer = document.getElementById('guestbook-container');
 
 const form = document.getElementById('leave-message');
 const input = document.getElementById('message');
+const time = document.getElementById('time');
 const guestbook = document.getElementById('guestbook');
 const numberAttending = document.getElementById('number-attending');
 const rsvpYes = document.getElementById('rsvp-yes');
@@ -115,6 +116,7 @@ async function main() {
     var x = addDoc(collection(db, 'guestbook'), {
       text: input.value,
       timestamp: Date.now(),
+      time: time.value,
       name: auth.currentUser.displayName,
       userId: auth.currentUser.uid,
     });
@@ -138,7 +140,7 @@ async function main() {
      snaps.forEach(doc => {
        // Create an HTML entry for each document and add it to the chat
        const entry = document.createElement('p');
-       entry.textContent = doc.data().name + ': ' + doc.data().text;
+       entry.textContent = doc.data().name + ': ' + doc.data().text +':' + doc.data().time;
        guestbook.appendChild(entry);
      });
    });
