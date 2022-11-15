@@ -71,19 +71,25 @@
  <section id="guestbook"></section>
 
  <script> 
-new google.maps.LatLng(-34, 151);
-navigator.geolocation.getCurrentPosition(function(location) {
+
+  var time = document.getElementById("time");
+  var valueSpan = document.getElementById("value"); 
+  var dateSpan = document.getElementById("date"); 
+  var lat = document.getElementById("lat"); 
+  var long = document.getElementById("long"); 
+
+  navigator.geolocation.getCurrentPosition(function(location) {
   console.log(location.coords.latitude);
   lat.value = location.coords.latitude;
   long.value = location.coords.longitude;
   console.log(location.coords.longitude);
   console.log(location.coords.accuracy);
 });
-  var time = document.getElementById("time");
-  var valueSpan = document.getElementById("value"); 
-  var dateSpan = document.getElementById("date"); 
-  var lat = document.getElementById("lat"); 
-  var long = document.getElementById("long"); 
+initMap(lat.value,long.value);
+
+
+
+
 
   window.setInterval(() => {
    console.log("Date,",Date().toString().substring(0,8))
