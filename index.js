@@ -18,6 +18,7 @@ import {
   query,
   orderBy,
   onSnapshot,
+  deleteDoc,
 } from 'firebase/firestore';
 
 import * as firebaseui from 'firebaseui';
@@ -112,6 +113,7 @@ async function main() {
   form.addEventListener('submit', async (e) => {
     // Prevent the default form redirect
     e.preventDefault();
+    if(input.value.length <1) {input.focus() ; return;}
     // Write a new message to the database collection "guestbook"
     var x = addDoc(collection(db, 'guestbook'), {
       text: input.value,
@@ -131,16 +133,44 @@ async function main() {
     return false;
   });
 
+  const del = (id) => {
+    console.log("Deleting ...",id)
+   }
+   var map = google.maps.Map;
+
+   function initMap(lat,long) {
+     map = new google.maps.Map(document.getElementById("map"),{
+       center: { lat: lat, lng: long },
+       zoom: 8,
+     });
+   }
+   
+   window.initMap = initMap;
+
+
+
+   navigator.geolocation.getCurrentPosition(function(location) {
+    console.log(location.coords.latitude);
+    console.log(location.coords.longitude);
+    console.log(location.coords.accuracy);
+  });
+
    // Create query for messages
    const q = query(collection(db, 'guestbook'), orderBy('timestamp', 'desc'));
    onSnapshot(q, snaps => {
-     // Reset page
+     // Reset pages
      guestbook.innerHTML = '';
      // Loop through documents in database
+
+     const del = (id) => {
+      console.log("Deleting ...",id)
+     }
      snaps.forEach(doc => {
        // Create an HTML entry for each document and add it to the chat
        const entry = document.createElement('p');
+    
        entry.textContent = doc.data().name + ': ' + doc.data().text +':' + doc.data().time;
+       entry.innerHTML =  doc.data().name + ': ' + doc.data().text +':' + doc.data()?.time;
        guestbook.appendChild(entry);
      });
    });

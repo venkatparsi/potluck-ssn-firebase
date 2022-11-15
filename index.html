@@ -5,16 +5,20 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Roboto:300,400,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+  defer
+></script>
 </head>
 
 <body>
 <div id="app">
   <!--https://parsi-venkat.imgbb.com/-->
-<img src="https://i.ibb.co/GVtSKJw/wepik-photo-mode-20221014-44511.png" alt="wepik-photo-mode-20221014-44511" border="0">
+<img src="https://i.ibb.co/FqXzdsW/Ranjit-Kotagiri-Header.png" alt="Ranjit-Kotagiri-Header" border="0">
  <section id="event-details-container">
-      <h1>SSN Social Meetup</h1>
+      <h1>Rnjits Social Meetup</h1>
 
-      <p><i class="material-icons">calendar_today</i> November 30</p>
+      <p><i class="material-icons">calendar_today</i> November 30 </p>
       <p><i class="material-icons">location_city</i> Hyderabad</p>
       <button id="startRsvp">RSVP</button>
  
@@ -26,25 +30,72 @@
 
   <section id="description-container">
       <h2>What we'll be doing</h2>
-      <p>Join us for a yummy dinner at 8:00pm with great home made delicious indian food!</p>
+      <p>Share your location and address, we will drop in as a suprise visit.!</p>
   </section>
 
    <section id="guestbook-container">
-   <h2>Discussion</h2>
+   <h2>Details : </h2>
+   Time:  <span id="value"></span>
+   <hr>
 
+   <section>
    <form id="leave-message">
-     <label>Leave a message: </label>
-     <input type="text" id="message">
-     <input type="time" id ="time" value="13:30"/>
+    <label>Family Name : </label>
+    <input type="text" id="family" placeholder="Enter Family name."></br>
+     <label>  My Name : </label>
+     <input type="text" id="name" placeholder="Enter Name....">
+     <br>
+     <label> Message : </label>
+     <input type="text" id="message"  placeholder="Enter text message....">
+     <br>
+     <label> Location : </label>
+     <input type="text" id="lat"  placeholder="Enter Lat...">
+     <input type="text" id="long"  placeholder="Enter Long....">
+     <div id="map"></div>
+
+     <br>
+     <input type="text" id="date" value="" editable="false"/>
+     <input type="time" id="time" value="06:30 PM" editable="false"/>
+<br>
+   
      <button type="submit">
        <i class="material-icons">send</i>
-       <span>Send</span>
+       <span>Send</span>       
      </button>
+     <hr>
+    
    </form>
-
+     
  </section>
 
  <section id="guestbook"></section>
+
+ <script> 
+new google.maps.LatLng(-34, 151);
+navigator.geolocation.getCurrentPosition(function(location) {
+  console.log(location.coords.latitude);
+  lat.value = location.coords.latitude;
+  long.value = location.coords.longitude;
+  console.log(location.coords.longitude);
+  console.log(location.coords.accuracy);
+});
+  var time = document.getElementById("time");
+  var valueSpan = document.getElementById("value"); 
+  var dateSpan = document.getElementById("date"); 
+  var lat = document.getElementById("lat"); 
+  var long = document.getElementById("long"); 
+
+  window.setInterval(() => {
+   console.log("Date,",Date().toString().substring(0,8))
+   valueSpan.innerText = Date().toString().substring(0,24);
+   dateSpan.value = Date().toString().substring(0,10);
+  },1000);
+
+  window.setInterval(() => {  
+   time.value = Date().toString().substring(16,21)
+  },5000);
+
+</script>
 
 </div>
 </body>
