@@ -53,6 +53,7 @@
      <label> Location : </label>
      <input type="text" id="lat"  placeholder="Enter Lat...">
      <input type="text" id="long"  placeholder="Enter Long....">
+     <button onclick="loadMap()">Load Map</button>
      <hr>
      
      <div id="map">
@@ -114,7 +115,9 @@ function initMap() {
 window.initMap = initMap;
 
 
- 
+ function loadMap(){
+   initMap();
+ }
 
 
   window.setInterval(() => {
@@ -134,7 +137,7 @@ window.initMap = initMap;
 </div>
 
 <script
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy1S4POQvzUNhfQWRCoL7kBcllI53_bOY&callback=initMap&v=weekly"
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy1S4POQvzUNhfQWRCoL7kBcllI53_bOY"
 defer
 ></script>
 </body>
