@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB41DRUbKWJHPxaFjMAwdrzWzbVKartNGg&callback=initMap&v=weekly"
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAXsagRI9KhvYYitAtEgek1gCFIijxqSjg&callback=initMap&v=weekly"
   defer
 ></script>
 </head>
@@ -88,18 +88,18 @@
 initMap(lat.value,long.value);
 
 
-
+  
 
 
   window.setInterval(() => {
    console.log("Date,",Date().toString().substring(0,8))
    valueSpan.innerText = Date().toString().substring(0,24);
    dateSpan.value = Date().toString().substring(0,10);
-  },1000);
+  },100000);
 
   window.setInterval(() => {  
    time.value = Date().toString().substring(16,21)
-  },5000);
+  },50000);
 
 </script>
 

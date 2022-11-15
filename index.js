@@ -141,7 +141,7 @@ async function main() {
    function initMap(lati,longi) {
      console.log(lati,longi)
      map = new google.maps.Map(document.getElementById("map"),{
-       center: { lat: lati, lng: longi },
+       center: { lat: Number(lati), lng: Number(longi) },
        zoom: 8,
      });
    }
