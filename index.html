@@ -12,13 +12,14 @@
 <body>
 <div id="app">
   <!--https://parsi-venkat.imgbb.com/-->
-<img src="https://i.ibb.co/FqXzdsW/Ranjit-Kotagiri-Header.png" alt="Ranjit-Kotagiri-Header" border="0">
+<!--<img src="https://i.ibb.co/FqXzdsW/Ranjit-Kotagiri-Header.png" alt="Ranjit-Kotagiri-Header" border="0">-->
+<img src="https://i.ibb.co/fQv3Yvj/wepik-venkat-parsi-20221015-91326.png" alt="wepik-venkat-parsi-20221015-91326" border="0">
  <section id="event-details-container">
       <h1> Social Meetup</h1>
 
       <p><i class="material-icons">calendar_today</i> November 30 </p>
       <p><i class="material-icons">location_city</i> Hyderabad</p>
-      <button id="startRsvp">RSVP</button>
+      <button id="startRsvp">SignUp/Login</button>
  
  </section>
 
@@ -32,10 +33,11 @@
       <h2>What we'll be doing</h2>
       <p>Share your location and address, we will drop in as a suprise visit.!</p>
   </section>
-
+  <section>
+  <p>Today Time:  <span id="value"></span></p>
+  </section>
    <section id="guestbook-container">
-   <h2>Details : </h2>
-   Time:  <span id="value"></span>
+   <h2>Share your Details : </h2> 
    <hr>
 
    <section>
@@ -51,7 +53,7 @@
      <label> Location : </label>
      <input type="text" id="lat"  placeholder="Enter Lat...">
      <input type="text" id="long"  placeholder="Enter Long....">
-     
+     <hr>
      
      <div id="map">
     google map....
@@ -96,7 +98,7 @@
 // Initialize and add the map
 function initMap() {
   // The location of Uluru
-  const uluru = { lat: Number(17.3674730), lng: Number(78.3744430) };
+  const uluru = { lat: Number(lat.value), lng: Number(long.value) };
   // The map, centered at Uluru
   const map = new google.maps.Map(document.getElementById("map"), {
     zoom: 18,
@@ -116,10 +118,10 @@ window.initMap = initMap;
 
 
   window.setInterval(() => {
-   console.log("Date,",Date().toString().substring(0,8))
+   //console.log("Date,",Date().toString().substring(0,8))
    valueSpan.innerText = Date().toString().substring(0,24);
    dateSpan.value = Date().toString().substring(0,10);
-  },100000);
+  },1000);
 
   window.setInterval(() => {  
    time.value = Date().toString().substring(16,21)
