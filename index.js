@@ -136,17 +136,7 @@ async function main() {
   const del = (id) => {
     console.log("Deleting ...",id)
    }
-   var map = google.maps.Map;
-
-   function initMap(lati,longi) {
-     console.log(lati,longi)
-     map = new google.maps.Map(document.getElementById("map"),{
-       center: { lat: Number(lati), lng: Number(longi) },
-       zoom: 8,
-     });
-   }
    
-   window.initMap = initMap;
 
 
 

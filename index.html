@@ -5,11 +5,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700|Roboto:300,400,700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy1S4POQvzUNhfQWRCoL7kBcllI53_bOY"
   
-></script>
-
 
 </head>
 
@@ -95,7 +91,27 @@
   console.log(location.coords.accuracy);
 });
 
-initMap(lat.value,long.value);
+
+
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  const uluru = { lat: Number(17.3674730), lng: Number(78.3744430) };
+  // The map, centered at Uluru
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 18,
+    center: uluru,
+  });
+  // The marker, positioned at Uluru
+  const marker = new google.maps.Marker({
+    position: uluru,
+    map: map,
+  });
+}
+
+window.initMap = initMap;
+
+
  
 
 
@@ -111,6 +127,14 @@ initMap(lat.value,long.value);
 
 </script>
 
+
+
 </div>
+
+<script
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy1S4POQvzUNhfQWRCoL7kBcllI53_bOY&callback=initMap&v=weekly"
+defer
+></script>
 </body>
+
 
