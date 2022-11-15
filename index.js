@@ -138,9 +138,10 @@ async function main() {
    }
    var map = google.maps.Map;
 
-   function initMap(lat,long) {
+   function initMap(lati,longi) {
+     console.log(lati,longi)
      map = new google.maps.Map(document.getElementById("map"),{
-       center: { lat: lat, lng: long },
+       center: { lat: lati, lng: longi },
        zoom: 8,
      });
    }
